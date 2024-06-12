@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head data-th-replace="~{/layouts/header :: head}">
+</head>
+
+<body>
+	<header data-th-replace="~{/layouts/header :: header}"></header>
+	
+	<div class="row">
+		<div class="col col-sm-12 fondo-form p-5">
+			<div class="row mb-5">
+			
+				<div class="d-grid gap-2 d-md-flex justify-content-md-end mb-2">
+				<a class="btn btn-primary" data-th-href="@{/docente/nuevo}">Nuevo Docente</a>
+				</div>
+				
+				<table class="table table-striped table-hover">
+				<tr>
+					<th>Legajo</th>
+					<th>Nombre</th>
+					<th>Apellido</th>
+					<th>Email</th>
+					<th>Telefono</th>
+					<th>Opciones</th>
+				</tr>
+				<tr data-th-each="carre: ${docentes}">
+					<td data-th-text="${carre.legajo}"></td>
+					<td data-th-text="${carre.nombre}"></td>
+					<td data-th-text="${carre.apellido}"></td>
+					<td data-th-text="${carre.email}"></td>
+					<td data-th-text="${carre.telefono}"></td>
+
+					<td>
+						<a class="btn btn-warning" data-th-href="@{/docente/modificar/}+${carre.legajo}" role="button">Editar</a>
+					    <a class="btn btn-danger" data-th-href="@{/docente/eliminar/}+${carre.legajo}" role="button">Eliminar</a>					
+					</td>
+					
+				</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" data-th-src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	
+	<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
+</body>
+
+</html>
